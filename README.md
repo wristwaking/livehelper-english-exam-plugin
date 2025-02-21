@@ -1,12 +1,22 @@
 # 醒语背词直播插件
 醒语背词直播插件是一款基于边缘骇客直播互动助手拓展的官方插件。主要通过electron进行封装。主要功能是进行直播间英语单词测验，并且进行实时积分统计排名。
 
+## 边缘骇客直播互动助手
+
+插件需要配合边缘骇客直播互动助手使用（官方地址：https://livehelper.willwaking.com/）
+
+![image](https://github.com/user-attachments/assets/9f9a9652-2853-402a-b7ee-1090e74cffeb)
+
+
 ## 插件界面预览
 ![迪醒界面](https://github.com/user-attachments/assets/36288c30-aaf1-43ee-876d-25c07d8fb5d6)
 
 ## 视频解析
 
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1301947891&bvid=BV1Fu4m1u77p&cid=1473750893&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+视频地址：https://www.bilibili.com/video/BV1Fu4m1u77p/?spm_id_from=333.999.0.0
+
+![image](https://github.com/user-attachments/assets/2a4d2689-f9e5-4955-bcee-3286737cbe33)
+
 
 
 ## 插件使用声明
