@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div id="app"><audio :src="`http://dict.youdao.com/dictvoice?audio=${problem.english}`" ref="english"></audio>
+        <div class="start-page" v-if="!state">
+            <div class="start-page-header">
+                <div @click="openLivehelperWeb">边缘骇客直播互动助手</div>
+                <span id="taobao" @click="openTaobao">定制直播插件：边缘骇客编程实验室</span>
+                <span @click="openWakeLanguage">醒语开源英语网</span>
+                <span @click="closeApp">退出</span>
+            </div>
+            <div class="start-page-main"><img class="start-page-image" src="./logo.png" alt="">
+                <div class="start-page-tip">醒语英语背词直播插件 4.0 标准版</div>
+                <div class="start-page-fail" v-if="!liveHelperState">正在检测是否连接边缘骇客直播互动助手</div>
+                <div class="start-page-button" v-else @click="startGame">即刻开启边缘骇客醒语英语背词直播插件</div>
+            </div>
+            <div class="start-page-bottom">边缘骇客直播互动助手官方插件 © 2023 ~ 2024 上海预醒网络科技有限公司版权所有</div>
+        </div>
+        <div class="history-box" v-if="state" id="history-scroll">
+            <div v-for="msg in messageList" :key="msg.id">
+                <div class="history right" v-if="msg.result">
+                    <span class="history-nick">{{ msg.nick }}：</span>
+                    <span class="history-word">{{ msg.content }}</span>
+                    <img src="svg/answer_right_icon.svg" alt="">
+                </div>
+                <div class="history error" v-else>
+                    <span class="history-nick">{{ msg.nick }}：</span>
+                    <span class="history-word">{{ msg.content }}</span>
+                    <img src="svg/answer_error_icon.svg" alt="">
+                </div>
+            </div>
+            <div class="blank"></div>
+        </div>
+        <div class="problem" v-if="state">
+            <div class="problem-menu">
+                <div @click="listenEnglishVoice">朗读提示</div>
+                <div @click="initEnglishProblem">直接新题</div>
+                <div @click="miniApp">隐藏插件</div>
+                <div @click="closeApp">退出插件</div>
+            </div>
+            <div class="problem-index">第 {{ index }} 题</div>
+            <div class="problem-content">
+                {{ showChineseFormat(problem.chinese) ? showChineseFormat(problem.chinese) :"单词数据加载中···" }}
+            </div>
+            <div class="problem-trace-box"><span v-if="index - 1">第 {{ index - 1 }} 题答案</span><span v-else></span>
+                <div>{{ trace.english }}</div>
+                <div>{{ showChineseFormat(trace.chinese) }}</div>
+            </div>
+            <div class="problem-tip">
+                <div class="problem-tip-header">
+                    <img style="margin-right: 10px;" src="./svg/idea_tip_icon.svg" alt="">
+                    <span>如何在直播间答题 ？</span>
+                </div>
+                <div class="problem-tip-content">
+                    直播间的同学们，通过弹幕发送当前题目所对应的英文单词，即可进行英语单词猜词答题，并且正确答对 1 题的同学即可上榜右侧排行榜</span>
+                </div>
+            </div>
+        </div>
+        <div class="user-box" v-if="state">
+            <div class="user-box-tip">
+                <img src="./svg/sort_icon.svg" alt="" style="margin-right: 10px;">
+                <span>直播间作答排行榜</span>
+            </div>
+            <div class="user" v-for="(user, index) in userList" :key="user.user_id"><img :src="user.avatar" alt="">
+                <div>{{ user.nick }}</div>
+                <div class="user-point">{{ user.point }}</div>
+            </div>
+        </div>
+    </div>
+    <script src="vue.min.js"></script>
+    <script src="render.js"></script>
+</body>
+
+</html>

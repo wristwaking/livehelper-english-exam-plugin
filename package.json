@@ -1,0 +1,38 @@
+{
+  "version": "3.0.0",
+  "productName": "醒语背词直播插件",
+  "description": "边缘骇客直播互动助手醒语背词直播插件",
+  "author": "上海预醒网络科技有限公司",
+  "name": "EdgeHacker-WakeLanguage-Plugin",
+  "homepage": "https://livehelper.willwaking.com/",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --win --x64"
+  },
+  "build": {
+    "appId": "EdgeHacker-WakeLanguage-Plugin",
+    "directories": {
+      "output": "build"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "醒语背词直播插件",
+      "license": "LICENSE.txt",
+      "uninstallDisplayName": "醒语背词直播插件"
+    }
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {
+    "electron": "27.1.3"
+  }
+}
